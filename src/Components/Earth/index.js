@@ -35,7 +35,7 @@ const Earth = (props) => {
       {/* Ambient Lighting fills every spot of 3D World (without light you cant see shit)*/}
       {/* <ambientLight intensity={1} /> */}
       {/* Vector = Array */}
-      <pointLight color="#f6f3ea" position={[2, 0, 2]} intensity={1.2}/>
+      <pointLight color="#f6f3ea" position={[2, 0, 5]} intensity={1.2}/>
       {/* Star properties factor = diff sizes random  */}
       <Stars
         radius={300}
@@ -46,7 +46,7 @@ const Earth = (props) => {
         fade={true}
       />
       {/* Clouds Geometry */}
-      <mesh ref={cloudRef}>
+      <mesh ref={cloudRef} position={[0, 0, 3]}>
         <sphereGeometry args={[1.005, 32, 32]} />
         {/* Phong Material gives single color or map (depthWrite = more depth) DoubleSide = Renders side even if not shown */}
         <meshPhongMaterial
@@ -58,7 +58,7 @@ const Earth = (props) => {
         />
       </mesh>
       {/* Earth Geometry */}
-      <mesh ref={earthRef}>
+      <mesh ref={earthRef} position={[0, 0, 3]}>
         {/* args are the properties that get passed through once instantiated */}
         <sphereGeometry args={[1, 32, 32]} />
         {/* Material (Colors, textures) */}
@@ -66,14 +66,14 @@ const Earth = (props) => {
         {/* Physical Base Rendering (renders dependent on the physical material being reflected) */}
         <meshStandardMaterial map={colorMap} normalMap={normalMap} metalness={0.4} roughness={0.7}/>
         {/* Control over Camera Movement */}
-        <OrbitControls
+        {/* <OrbitControls
           enableZoom={true}
           enablePan={true}
           enableRotate={true}
           zoomSpeed={0.6}
           panSpeed={0.5}
           rotateSpeed={0.4}
-        />
+        /> */}
       </mesh>
     </>
   );
