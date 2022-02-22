@@ -1,5 +1,5 @@
 import React from "react";
-
+import * as THREE from 'three';
 // Camera
 import { OrbitControls } from "@react-three/drei";
 
@@ -22,7 +22,13 @@ const Earth = (props) => {
     <>
       {/* Ambient Lighting fills every spot of 3D World (without light you cant see shit)*/}
       <ambientLight intensity={1} />
-      {/* Whatever Geometric Shape */}
+      {/* Clouds Geometry */}
+      <mesh>
+        <sphereGeometry args={[1.004, 32, 32]}/>
+        {/* Phong Material gives single color or map (depthWrite = more depth) DoubleSide = Renders side even if not shown */}
+        <meshPhongMaterial map={cloudsMap} opacity={0.5} depthWrite={false} transparent={true} side={THREE.DoubleSide}/>
+      </mesh>
+      {/* Earth Geometry */}
       <mesh >
         {/* args are the properties that get passed through once instantiated */}
         <sphereGeometry args={[1, 32, 32]} />
