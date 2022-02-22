@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react';
 import Earth from './Components/Earth';
+import HeroSection from './Components/HeroSection';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Earth />
         </Suspense>
       </Canvas>
+      <HeroSection />
     </AppContainer>
   );
 }
