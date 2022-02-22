@@ -2,6 +2,7 @@ import './App.css';
 import styled from 'styled-components'
 import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react';
+import Earth from './Components/Earth';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         {/* React Loader State */}
         <Suspense fallback={null}>
           {/* Earth */}
+          <Earth />
         </Suspense>
       </Canvas>
     </AppContainer>
