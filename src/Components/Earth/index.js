@@ -1,7 +1,7 @@
 import React from "react";
-import * as THREE from 'three';
+import * as THREE from "three";
 // Camera
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Stars } from "@react-three/drei";
 
 // Textures
 import EarthDayMap from "../../assets/textures/8k_earth_daymap.jpg";
@@ -22,14 +22,29 @@ const Earth = (props) => {
     <>
       {/* Ambient Lighting fills every spot of 3D World (without light you cant see shit)*/}
       <ambientLight intensity={1} />
+      {/* Star properties factor = diff sizes random  */}
+      <Stars
+        radius={300}
+        depth={60}
+        count={20000}
+        factor={7}
+        saturation={0}
+        fade={true}
+      />
       {/* Clouds Geometry */}
       <mesh>
-        <sphereGeometry args={[1.004, 32, 32]}/>
+        <sphereGeometry args={[1.004, 32, 32]} />
         {/* Phong Material gives single color or map (depthWrite = more depth) DoubleSide = Renders side even if not shown */}
-        <meshPhongMaterial map={cloudsMap} opacity={0.5} depthWrite={false} transparent={true} side={THREE.DoubleSide}/>
+        <meshPhongMaterial
+          map={cloudsMap}
+          opacity={0.5}
+          depthWrite={false}
+          transparent={true}
+          side={THREE.DoubleSide}
+        />
       </mesh>
       {/* Earth Geometry */}
-      <mesh >
+      <mesh>
         {/* args are the properties that get passed through once instantiated */}
         <sphereGeometry args={[1, 32, 32]} />
         {/* Material (Colors, textures) */}
